@@ -36,3 +36,5 @@ console.log(user);
 console.log("daniel \r\n says hi");
 console.log("daniel \\n says hi");
 console.log("daniel \" 'n says hi");
+
+

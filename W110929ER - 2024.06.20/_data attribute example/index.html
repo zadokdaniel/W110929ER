@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="d" data-bla data-blabla="5"></div>
+
+    <script>
+      const elem = document.getElementById("d");
+      console.log(elem.dataset);
+
+      elem.dataset.hello = "from code";
+    </script>
+  </body>
+</html>
