@@ -12,9 +12,3 @@ ReactDOM.createRoot(document.getElementById("root")).render(
     <App />
   </React.StrictMode>
 );
-
-// custom hooks
-// state as array (using colors favorites)
-// inputs as object
-// raising event (gallery)
- 

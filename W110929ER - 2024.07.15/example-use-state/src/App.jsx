@@ -1,15 +1,16 @@
-import { useState } from "react";
 import "./App.css";
 import ColorInput from "./components/ColorInput";
 import ColorPicker from "./components/colorPicker";
 import Counter from "./components/Counter";
 
-function App() {
-  const [range, setRange] = useState({
-    min: 0,
-    max: 10,
-  });
+import { useInput } from "./hooks/useInput";
+import { useWindowSize } from "./hooks/useWindowSize";
 
+function App() {
+  const [min, { handleInputChange: minHandleInputChange }] = useInput(0);
+  const [max, { handleInputChange: maxHandleInputChange }] = useInput(10);
+
+  const { innerHeight, innerWidth, outerHeight, outerWidth } = useWindowSize();
   return (
     <>
       <div>
@@ -27,29 +28,33 @@ function App() {
       <div>
         <h1>Counter</h1>
 
-        <input
-          type="number"
-          value={range.min}
-          onInput={(e) =>
-            setRange((range) => ({ ...range, min: e.target.value }))
-          }
-        />
-        <input
-          type="number"
-          value={range.max}
-          onInput={(e) =>
-            setRange((range) => ({ ...range, max: e.target.value }))
-          }
-        />
-        <Counter min={range.min} max={range.max} />
+        <input type="number" value={min} onInput={minHandleInputChange} />
+        <input type="number" value={max} onInput={maxHandleInputChange} />
+        <Counter min={min} max={max} />
         <Counter min={-5} max={5} initialCounter={-5} />
         <Counter min={-5} max={5} />
         <Counter min={-10} max={0} />
         <Counter />
+      </div>
+
+      <div>
+        <ul>
+          <li>
+            innerHeight: <b>{innerHeight}</b>
+          </li>
+          <li>
+            innerWidth: <b>{innerWidth}</b>
+          </li>
+          <li>
+            outerHeight: <b>{outerHeight}</b>
+          </li>
+          <li>
+            outerWidth: <b>{outerWidth}</b>
+          </li>
+        </ul>
       </div>
     </>
   );
 }
 
 export default App;
-
