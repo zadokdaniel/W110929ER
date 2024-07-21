@@ -4,26 +4,7 @@ import TodoForm from "./todoForm";
 import TodoList from "./todoList";
 
 function Todo() {
-  const [todos, setTodos] = useState([
-    {
-      id: crypto.randomUUID(),
-      text: "Buy Milk",
-      isComplete: true,
-      createdAt: new Date(),
-    },
-    {
-      id: crypto.randomUUID(),
-      text: "Sell Car",
-      isComplete: false,
-      createdAt: new Date(),
-    },
-    {
-      id: crypto.randomUUID(),
-      text: "Draw for 50 minutes",
-      isComplete: true,
-      createdAt: new Date(),
-    },
-  ]);
+  const [todos, setTodos] = useState([]);
 
   const removeTodo = (id) =>
     setTodos((todos) => todos.filter((todo) => todo.id !== id));
@@ -43,9 +24,20 @@ function Todo() {
       })
     );
 
+  const addTodo = (text) =>
+    setTodos((todos) => [
+      ...todos,
+      {
+        id: crypto.randomUUID(),
+        text,
+        isComplete: false,
+        createdAt: new Date(),
+      },
+    ]);
+
   return (
     <div className="container-md mt-3 todo">
-      <TodoForm />
+      <TodoForm onSubmit={addTodo} />
       <TodoList
         todos={todos}
         onItemDeleted={removeTodo}
