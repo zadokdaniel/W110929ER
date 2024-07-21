@@ -23,6 +23,7 @@ function TodoForm({ onSubmit = () => {} }) {
 
     onSubmit(input);
     resetInput();
+    resetError();
   };
 
   return (
@@ -32,6 +33,9 @@ function TodoForm({ onSubmit = () => {} }) {
         <input
           value={input}
           onInput={handleInputChange}
+          onKeyDown={(e) => {
+            if (e.code === "Enter") handleAddClick();
+          }}
           type="text"
           className={["form-control", error ? "is-invalid" : ""]
             .filter(Boolean)

@@ -25,14 +25,16 @@ function TodoList({
 
       <div className="items mt-3">
         <ul className="list-group">
-          {todos.map((todo) => (
-            <TodoItem
-              onClick={onItemSelected}
-              onDelete={onItemDeleted}
-              key={todo.id}
-              todo={todo}
-            />
-          ))}
+          {todos
+            .toSorted((a) => (a.isComplete ? 1 : -1))
+            .map((todo) => (
+              <TodoItem
+                onClick={onItemSelected}
+                onDelete={onItemDeleted}
+                key={todo.id}
+                todo={todo}
+              />
+            ))}
         </ul>
       </div>
     </div>
