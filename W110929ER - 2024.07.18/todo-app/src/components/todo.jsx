@@ -25,10 +25,32 @@ function Todo() {
     },
   ]);
 
+  const removeTodo = (id) =>
+    setTodos((todos) => todos.filter((todo) => todo.id !== id));
+
+  const changeIsComplete = (id, isComplete) =>
+    setTodos((todos) =>
+      todos.map((todo) => {
+        if (todo.id !== id) {
+          return todo;
+        }
+
+        return {
+          ...todo,
+          isComplete:
+            typeof isComplete === "boolean" ? isComplete : !todo.isComplete,
+        };
+      })
+    );
+
   return (
     <div className="container-md mt-3 todo">
       <TodoForm />
-      <TodoList todos={todos} />
+      <TodoList
+        todos={todos}
+        onItemDeleted={removeTodo}
+        onItemSelected={changeIsComplete}
+      />
     </div>
   );
 }

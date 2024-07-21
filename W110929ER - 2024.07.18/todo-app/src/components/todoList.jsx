@@ -1,6 +1,10 @@
 import TodoItem from "./todoItem";
 
-function TodoList({ todos }) {
+function TodoList({
+  onItemDeleted = () => {},
+  onItemSelected = () => {},
+  todos,
+}) {
   if (todos.length === 0) {
     return (
       <div className="p-4 my-3 bg-body-tertiary rounded-3">
@@ -22,7 +26,12 @@ function TodoList({ todos }) {
       <div className="items mt-3">
         <ul className="list-group">
           {todos.map((todo) => (
-            <TodoItem key={todo.id} todo={todo} />
+            <TodoItem
+              onClick={onItemSelected}
+              onDelete={onItemDeleted}
+              key={todo.id}
+              todo={todo}
+            />
           ))}
         </ul>
       </div>
