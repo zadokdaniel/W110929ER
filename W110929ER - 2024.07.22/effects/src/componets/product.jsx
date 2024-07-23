@@ -33,10 +33,10 @@ function Product({
 
         {instock ? (
           <Counter
+            value={quantitiy}
             onChange={onChange}
             min={0}
             max={instock}
-            initialCounter={quantitiy}
           />
         ) : (
           <div>Out of Stock.</div>
