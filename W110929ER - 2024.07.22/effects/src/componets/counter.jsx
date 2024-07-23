@@ -4,6 +4,7 @@ function useCounter({
   min = Number.MIN_SAFE_INTEGER,
   max = Number.MAX_SAFE_INTEGER,
   initialCounter = 0,
+  onChange = () => {},
 }) {
   if (min > max) {
     throw new Error(
@@ -28,6 +29,7 @@ function useCounter({
     }
 
     setCounter((counter) => counter + 1);
+    onChange(counter + 1);
   };
   const decrement = () => {
     if (isMin) {
@@ -35,6 +37,7 @@ function useCounter({
     }
 
     setCounter((counter) => counter - 1);
+    onChange(counter + 1);
   };
 
   return [
@@ -50,15 +53,19 @@ function useCounter({
   ];
 }
 
-function Counter(counterOptions) {
-  const [counter, isMin, isMax, increment, decrement] =
-    useCounter(counterOptions);
+function Counter({ min, max, initialCounter, onChange }) {
+  const [counter, { isMin, isMax, increment, decrement }] = useCounter({
+    min,
+    max,
+    initialCounter,
+    onChange,
+  });
 
   return (
     <div className="mt-3 d-flex justify-content-center">
       <button
         disabled={isMin}
-        onClick={increment}
+        onClick={decrement}
         className="btn btn-sm btn-danger"
       >
         -
@@ -66,7 +73,7 @@ function Counter(counterOptions) {
       <span className="mx-3">{counter}</span>
       <button
         disabled={isMax}
-        onClick={decrement}
+        onClick={increment}
         className="btn btn-sm btn-success"
       >
         +
