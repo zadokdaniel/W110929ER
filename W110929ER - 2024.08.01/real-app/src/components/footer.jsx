@@ -1,8 +1,10 @@
+import Logo from "./logo";
+
 function Footer() {
   return (
     <footer className="border-top py-2 text-center">
       <span>
-        Real <i className="bi bi-geo-fill"></i> App
+        <Logo />
       </span>
 
       <span className="mx-2">&copy;</span>
