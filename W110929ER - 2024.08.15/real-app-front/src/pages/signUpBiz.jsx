@@ -7,11 +7,11 @@ import { useState } from "react";
 import { Navigate, useNavigate } from "react-router-dom";
 import { useAuth } from "../contexts/auth.context";
 
-function SignUp() {
+function SignUpBiz() {
   const [serverError, setServerError] = useState("");
   const navigate = useNavigate();
 
-  const { user, signUp } = useAuth();
+  const { user, signUp, login } = useAuth();
 
   const form = useFormik({
     validateOnMount: true,
@@ -46,8 +46,10 @@ function SignUp() {
     },
     async onSubmit(values) {
       try {
-        await signUp({ ...values, biz: false });
-        navigate("/sign-in");
+        await signUp({ ...values, biz: true });
+        await login({ email: values.email, password: values.password });
+
+        navigate("/my-cards");
       } catch (err) {
         if (err.response?.status === 400) {
           setServerError(err.response.data);
@@ -108,4 +110,4 @@ function SignUp() {
   );
 }
 
-export default SignUp;
+export default SignUpBiz;
