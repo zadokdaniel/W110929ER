@@ -1,0 +1,21 @@
+{
+  "name": "hw",
+  "version": "1.0.0",
+  "main": "app.js",
+  "scripts": {
+    "start": "node .",
+    "dev": "nodemon ."
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "devDependencies": {
+    "nodemon": "^3.1.7"
+  },
+  "dependencies": {
+    "byte-size": "^9.0.0",
+    "chalk": "^4.1.2",
+    "cowsay": "^1.6.0"
+  }
+}
