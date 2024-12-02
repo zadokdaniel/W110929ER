@@ -1,0 +1,12 @@
+@local=http://localhost:3000
+
+GET {{local}}/api/favorites
+
+
+###
+POST {{local}}/api/favorites
+Content-Type: application/json
+
+{
+    "favorite": "orange"
+}

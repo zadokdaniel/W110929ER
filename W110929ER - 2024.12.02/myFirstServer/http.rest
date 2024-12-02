@@ -1,0 +1,11 @@
+@local=http://localhost:3000
+
+GET {{local}}/home?a=5&b=10
+a: my name is daniel
+b: my name is shalom
+Content-Type: application/json
+
+{
+ "a": 5, 
+ "b": 10
+}
