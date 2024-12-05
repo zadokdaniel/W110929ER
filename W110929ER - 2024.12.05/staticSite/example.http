@@ -1,0 +1,7 @@
+@local=http://localhost:3000
+
+POST {{local}}/profile/favorite?name=orange
+x-token: 12345
+
+###
+GET {{local}}/profile/favorite

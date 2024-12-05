@@ -1,0 +1,6 @@
+@local=http://localhost:3000
+
+GET {{local}}/home?password=1234
+
+###
+POST {{local}}/a/b/c/d/e/f
