@@ -1,0 +1,11 @@
+@local=http://localhost:3005
+
+POST {{local}}/api/users/
+Content-Type: application/json
+
+{
+    "name": "danile",
+    "email": "bla@dbdfasddddfsdfdlia.com", 
+    "password" : "adfdsfkjsdf", 
+    "biz": true
+}
