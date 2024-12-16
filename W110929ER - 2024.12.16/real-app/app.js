@@ -1,9 +1,13 @@
+require("dotenv/config");
+
 const PORT = 3005;
+
 
 const mongoose = require("mongoose");
 const express = require("express");
 
 const usersRouter = require("./routes/users");
+const authRouter = require("./routes/auth");
 
 const app = express();
 
@@ -11,6 +15,7 @@ app.use(require("morgan")("dev"));
 app.use(express.json());
 
 app.use("/api/users", usersRouter);
+app.use("/api/auth", authRouter);
 
 connect();
 

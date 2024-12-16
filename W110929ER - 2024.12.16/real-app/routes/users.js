@@ -2,8 +2,14 @@ const express = require("express");
 const bcrypt = require("bcrypt");
 const _ = require("lodash");
 const router = express.Router();
+const authMW = require("../middleware/auth");
 
 const { User, validateUser } = require("../model/users");
+
+router.get("/me", authMW, async (req, res) => {
+  console.log(req.user);
+  res.json(await User.findById(req.user._id, { password: 0 }));
+});
 
 router.post("/", async (req, res) => {
   // validate user input
@@ -31,9 +37,3 @@ router.post("/", async (req, res) => {
 });
 
 module.exports = router;
-
-
-
-
-
-

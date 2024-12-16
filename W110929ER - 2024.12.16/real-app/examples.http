@@ -1,11 +1,37 @@
 @local=http://localhost:3005
 
-POST {{local}}/api/users/
+
+## create user
+POST {{local}}/api/users
 Content-Type: application/json
 
 {
     "name": "danile",
-    "email": "bla@dbdfasddddfsdfdlia.com", 
-    "password" : "adfdsfkjsdf", 
-    "biz": true
+    "email": "a@a.com", 
+    "password" : "Aa123456", 
+    "biz": false
 }
+
+### login
+POST {{local}}/api/auth/
+Content-Type: application/json
+
+{
+    "email": "a@a.com",
+    "password": "Aa123456"
+}
+
+### access current user's token information
+GET {{local}}/api/users/me
+x-auth-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NzYwNThjYWM1NjRlZGY2YzIxNzYxYjkiLCJiaXoiOmZhbHNlLCJpYXQiOjE3MzQzNzYwNzh9.dymWnB_3nAteS3OEaJ59v4DATRGarFxbk3Omj6g-jHg
+
+
+
+
+
+
+
+
+
+
+
