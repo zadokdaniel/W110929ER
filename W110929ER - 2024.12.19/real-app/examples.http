@@ -1,0 +1,47 @@
+@local=http://localhost:3005
+@token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NzYwNThiZGM1NjRlZGY2YzIxNzYxYjYiLCJiaXoiOnRydWUsImlhdCI6MTczNDYzMzYyMn0.CN4zRChTu7jJc5v8Fc5lU6XISYCplojCJi7AUig3uNw
+
+## create user
+POST {{local}}/api/users
+Content-Type: application/json
+
+{
+    "name": "danile",
+    "email": "a@a.com", 
+    "password" : "Aa123456", 
+    "biz": false
+}
+
+### login
+POST {{local}}/api/auth/
+Content-Type: application/json
+
+{
+    "email": "biz@biz.com",
+    "password": "Aa123456"
+}
+
+### access current user's token information
+GET {{local}}/api/users/me
+x-auth-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NzYwNThjYWM1NjRlZGY2YzIxNzYxYjkiLCJiaXoiOmZhbHNlLCJpYXQiOjE3MzQzNzYwNzh9.dymWnB_3nAteS3OEaJ59v4DATRGarFxbk3Omj6g-jHg
+
+
+
+### create card
+POST {{local}}/api/cards/
+x-auth-token: {{token}}
+Content-Type: application/json
+
+{
+    "bizName" : "Lemon", 
+    "bizPhone": "0554444443", 
+    "bizAddress": "dkslfjsd", 
+    "bizDescription": "dkjfsd" ,
+    "bizImage": "ksjfasdkjfaksldjfksaldjfsad"
+}
+
+
+
+
+
+

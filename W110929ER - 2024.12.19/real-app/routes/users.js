@@ -6,14 +6,7 @@ const authMW = require("../middleware/auth");
 
 const { User, validateUser } = require("../model/users");
 
-let x = 5
-x
-5
-
-
-
 router.get("/me", authMW, async (req, res) => {
-  console.log(req.user);
   res.json(await User.findById(req.user._id, { password: 0 }));
 });
 
